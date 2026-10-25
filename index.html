@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Materiali per il sito</title>
+<style>
+:root{--ink:#1d1b19;--paper:#f6f2ea;--card:#fffdf8;--line:#ddd5c6;--accent:#8a3b1f;--ok:#2f6b3f;--mut:#6d665b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Georgia,'Times New Roman',serif}
+header{padding:40px 20px 24px;max-width:860px;margin:auto}
+h1{font-size:clamp(1.7rem,5vw,2.4rem);margin:0 0 8px;font-weight:600;letter-spacing:-.01em}
+header p{color:var(--mut);margin:.3em 0}
+.bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line);padding:10px 20px}
+.bar>div{max-width:860px;margin:auto;display:flex;align-items:center;gap:14px;font:14px system-ui,sans-serif;color:var(--mut)}
+.track{flex:1;height:8px;background:var(--line);border-radius:9px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--accent);transition:width .3s}
+main{max-width:860px;margin:auto;padding:10px 20px 80px}
+section{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:18px 0;overflow:hidden}
+section>summary{cursor:pointer;list-style:none;padding:16px 20px;font-size:1.15rem;font-weight:600;display:flex;justify-content:space-between;gap:10px}
+section>summary::-webkit-details-marker{display:none}
+section>summary small{font:13px system-ui,sans-serif;color:var(--mut);font-weight:400;text-align:right}
+.body{padding:4px 20px 20px;border-top:1px solid var(--line)}
+.intro{font:14px system-ui,sans-serif;color:var(--mut);margin:12px 0}
+label{display:block;font:600 14px system-ui,sans-serif;margin:16px 0 4px}
+.hint{font:13px system-ui,sans-serif;color:var(--mut);margin:0 0 5px}
+input[type=text],input[type=url],input[type=email],input[type=date],textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;font:15px system-ui,sans-serif;color:var(--ink)}
+textarea{min-height:90px;resize:vertical}
+input:focus,textarea:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.note{margin-top:22px;padding-top:6px;border-top:1px dashed var(--line)}
+.note textarea{min-height:60px;background:#fbf8f1}
+.v{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:12px 0;background:#fff}
+.v p{margin:0 0 8px}
+.v .ch{display:flex;flex-wrap:wrap;gap:18px;font:14px system-ui,sans-serif}
+.v .ch label{display:inline-flex;gap:6px;margin:0;font-weight:500;align-items:center}
+.v textarea{min-height:60px;margin-top:8px}
+.v.fix{border-color:var(--accent)}.v.okk{border-color:var(--ok)}
+.row{border:1px dashed var(--line);border-radius:10px;padding:4px 12px 12px;margin:10px 0;position:relative}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 14px}
+button{font:600 14px system-ui,sans-serif;padding:10px 16px;border-radius:8px;border:1px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer}
+button.sec{background:transparent;color:var(--ink)}
+button.x{position:absolute;top:8px;right:8px;padding:4px 9px;font-size:12px}
+.count{font:12px system-ui,sans-serif;color:var(--mut);text-align:right}
+.end{background:var(--card);border:2px solid var(--ink);border-radius:12px;padding:20px;margin-top:28px}
+.end .acts{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.chk{display:flex;gap:10px;align-items:flex-start;font:15px system-ui,sans-serif;margin:12px 0;font-weight:400}
+.chk input{margin-top:4px}
+#msg{font:14px system-ui,sans-serif;color:var(--ok);min-height:1.4em}
+.cat{margin:18px 0 6px;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.cat h4{margin:0 0 2px;font:600 15px system-ui,sans-serif}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:10px}
+.th{border:1px solid var(--line);border-radius:8px;padding:8px;position:relative;background:var(--card)}
+.th img{width:100%;height:140px;object-fit:cover;border-radius:6px;display:block}
+.th input{margin-top:6px;font-size:13px;padding:6px 8px}
+.th button{position:absolute;top:12px;right:12px;padding:3px 8px;font-size:12px;background:#fff;color:var(--ink)}
+.bar button{padding:6px 10px;font-size:12px}
+#stat{white-space:nowrap}
+#stat.bad{color:#b3261e;font-weight:600}
+.warn{font:13px system-ui,sans-serif;background:#fbf0e6;border:1px solid #e8cdb3;border-radius:8px;padding:8px 12px;margin:10px 0}
+</style>
+</head>
+<body>
+<header>
+  <h1 id="h1">Il tuo sito web: raccogliamo i materiali</h1>
+  <p>Questo modulo serve a costruire il sito senza inventare nulla: usiamo solo ciò che confermi tu.</p>
+  <p><strong>Come fare:</strong> compila ciò che puoi, anche a pezzi: tutto si salva da solo su questo computer, nel browser che stai usando. Puoi scrivere, incollare link e caricare foto. Apri il file dal computer con Chrome, Edge, Firefox o Safari, non dall'anteprima di WhatsApp o della posta. Ogni sezione ha uno spazio <em>Note e dubbi</em>. Alla fine premi <em>Scarica PDF</em> (e, se hai caricato foto, <em>Scarica foto</em>) e invia i file a chi ti ha mandato il modulo. Se non hai un dato, lascia il campo vuoto: non è un problema.</p>
+</header>
+<div class="bar"><div style="flex-wrap:wrap"><span id="pct">0%</span><div class="track"><div class="fill" id="fill"></div></div><span id="cnt"></span><span id="stat"></span><button class="sec" type="button" onclick="dl('json')">Salva bozza</button></div></div>
+<div class="warn" id="alert" style="display:none;max-width:860px;margin:12px auto;border-color:#b3261e;background:#fdecea"><strong>Attenzione: il salvataggio automatico non funziona in questo modo di apertura.</strong> Salva il file sul computer e aprilo con Chrome, Edge, Firefox o Safari (non dall'anteprima di WhatsApp, Gmail o in navigazione privata). Nel frattempo premi «Salva bozza» ogni tanto, e prima di chiudere la pagina scarica il file: altrimenti perdi ciò che hai scritto.</div>
+<main id="app"></main>
+
+<script>
+/*CONFIG_START*/
+const CONFIG={
+ artist:"Alessandro Nobile",
+ storageKey:"nobile_sito_v2",
+ destEmail:"",
+ invio:{email:"giansalvo.cannizzo@gmail.com",whatsapp:""},
+ hints:{d_assoc:"Nella scheda risulta quattroetrentatre.it: confermi?",c_email:"Nella scheda c'è nobile.alessandro@gmail.com: va bene?",c_fb:"Nella scheda: facebook.com/nobileale",c_ig:"Nella scheda: instagram.com/nobile_alessandro"},
+ verify:[["v1", "Originario e attivo principalmente a Vittoria (Ragusa), Sicilia."], ["v2", "Ha iniziato con pianoforte e basso elettrico, poi si è dedicato al contrabbasso."], ["v3", "Diploma in contrabbasso classico al Conservatorio «A. Corelli» di Messina."], ["v4", "Biennio Jazz (laurea di secondo livello) a Messina con lode; tesi «Segnali sonori e gestuali nel jazz»."], ["v5", "Seminari Siena Jazz; studi con Salvatore Bonafede e Pietro Leveratto."], ["v6", "Ha fatto parte del collettivo Improvvisatore Involontario (Catania) e dell'ensemble SCRAP."], ["v7", "Collaborazioni con Stefano Maltese, Paolo Sorge, Luciano Troja, Raffaele Genovese."], ["v8", "«Southeast of my Dreams» (2014, Labirinti Sonori / IRD), album solista d'esordio."], ["v9", "«Reaction and Reflection» (2018, Rudi Records), live al Teatro Vittoria Colonna, trio con Dave Burrell e Antonio Moncada."], ["v10", "«Naturale» (2019) e «Mysterious Union» (2022): qual è l'etichetta o il formato di ciascuno?"], ["v11", "Duo con Costanza Paternò, vincitore del Premio Fabrizio De André: in che anno?"], ["v12", "Naked2: duo con il vibrafonista Salvo Scucces."], ["v13", "Direttore Artistico dell'Associazione Culturale Quattro e Trentatre (4e33)."], ["v14", "Festival ideati/curati: Oltremente, Sporae, Casmene Fest (legato al Premio Fabio Alfè)."], ["v15", "Direzione e programmazione della stagione musicale del Teatro Comunale di Vittoria: in quali anni?"], ["v16", "Laboratori di musica d'insieme e improvvisazione, tra cui 4e33 Creative Ensemble (con Santa Briganti)."]]
+};
+/*CONFIG_END*/
+
+const H=(k,d)=>CONFIG.hints[k]||d||'';
+const VERIFY=CONFIG.verify;
+const PCAT=[
+ ["hero","Foto principale orizzontale","Quella in alto nella home: meglio una foto larga, con spazio intorno al soggetto."],
+ ["ritratto","Ritratti","Uno o due ritratti, anche per la stampa."],
+ ["live","Foto dal vivo","Da 2 a 4 foto in concerto."],
+ ["attivita","Attività culturali, laboratori, festival","Se presenti."],
+ ["cover","Copertine dei dischi","Alta risoluzione se possibile."],
+ ["altro","Altre immagini","Locandine, loghi, scansioni."]
+];
+
+const S=[];
+if(VERIFY.length)S.push({id:"verifica",t:"Verifica dei dati già raccolti",sub:VERIFY.length+" affermazioni da confermare",intro:"Questi dati provengono da fonti pubbliche. Per ognuno scegli «Corretto» oppure «Da correggere» e scrivi la versione giusta o ciò che manca.",items:[{t:"verify"}]});
+S.push(
+ {id:"profilo",t:"Profilo e presentazione",sub:"nome, bio, frase",items:[
+  {t:"text",k:"nome_d_arte",l:"Come vuoi che compaia il tuo nome sul sito",h:"Nome e cognome esatti, come li scrivi di solito."},
+  {t:"text",k:"qualifiche",l:"Come ti definisci",h:"Es. musicista, compositore, direttore artistico…"},
+  {t:"text",k:"citta",l:"Città o territorio da indicare"},
+  {t:"area",k:"bio_breve",l:"Biografia breve (3-4 righe)",h:"Come ti presenteresti a un organizzatore o a un giornalista.",max:450},
+  {t:"area",k:"bio_media",l:"Biografia media (1-2 paragrafi, facoltativa)",max:1500},
+  {t:"area",k:"bio_lunga",l:"Biografia estesa (facoltativa)",h:"Se ne hai già una, incollala.",max:4000},
+  {t:"text",k:"frase",l:"Una frase che ti rappresenta (facoltativa)",h:"Tua oppure una citazione di cui hai il permesso."},
+  {t:"text",k:"parole",l:"Tre parole per descrivere la tua musica e il tuo mondo"},
+  {t:"area",k:"lingue",l:"Lingue in cui vuoi il sito",h:"Italiano come base. Indica se serve anche l'inglese o altro."}]},
+ {id:"percorso",t:"Percorso, premi e collaborazioni",sub:"studi, progetti, premi",items:[
+  {t:"area",k:"studi",l:"Studi e formazione",h:"Scuole, titoli, maestri, seminari. Scrivi solo ciò che vuoi pubblicare."},
+  {t:"rep",k:"premi",add:"Aggiungi premio",cols:[{k:"nome",l:"Premio / riconoscimento"},{k:"anno",l:"Anno"},{k:"ente",l:"Ente"},{k:"link",l:"Link",type:"url"}]},
+  {t:"rep",k:"progetti",add:"Aggiungi progetto",cols:[{k:"nome",l:"Nome progetto"},{k:"descr",l:"Descrizione di una riga"},{k:"musicisti",l:"Con chi"},{k:"anni",l:"Periodo / se attivo"},{k:"link",l:"Link",type:"url"}]},
+  {t:"area",k:"collab",l:"Collaborazioni da citare",h:"Nomi e, se vuoi, il contesto. Cita solo chi sei sicuro di poter nominare."}]},
+ {id:"foto",t:"Foto e immagini",sub:"carica o linka",intro:"Carica le foto direttamente qui: vengono ridotte (max 1600 px) per poterle inviare facilmente nel file delle risposte. Gli originali ad alta risoluzione ci serviranno comunque: indica sotto il link a una cartella (Drive, Dropbox, WeTransfer). Per ogni foto scrivi una breve descrizione (serve per l'accessibilità) e il nome del fotografo.",items:[
+  {t:"photos"},
+  {t:"url",k:"f_cartella",l:"Link a una cartella con le foto originali ad alta risoluzione"},
+  {t:"text",k:"f_credito",l:"Crediti fotografici generali"},
+  {t:"check",k:"f_diritti",l:"Confermo di avere il diritto di usare queste foto sul sito (o ho il permesso dei fotografi)."}]},
+ {id:"ascolto",t:"Ascolto, video e press kit",sub:"link",intro:"Per far funzionare il sito serve almeno un brano da ascoltare. Incolla i link: li incorporiamo nella pagina.",items:[
+  {t:"url",k:"a_yt",l:"YouTube (canale o video preferito)"},
+  {t:"url",k:"a_bc",l:"Bandcamp"},
+  {t:"url",k:"a_sp",l:"Spotify (artista o album)"},
+  {t:"url",k:"a_ap",l:"Apple Music"},
+  {t:"url",k:"a_sc",l:"SoundCloud / altro"},
+  {t:"url",k:"a_vid",l:"Video dal vivo che ti rappresenta di più"},
+  {t:"url",k:"a_pk",l:"Press kit o dossier (PDF, link)"},
+  {t:"url",k:"a_rider",l:"Scheda tecnica / rider (link)"},
+  {t:"text",k:"a_evid",l:"Quale brano o video vuoi in evidenza e perché?"}]},
+ {id:"disco",t:"Discografia",sub:"un riquadro per disco",intro:"Per ogni disco indica i dati essenziali. Premi «Aggiungi disco» per altri. Includi anche i dischi in cui sei ospite, se vuoi mostrarli.",items:[
+  {t:"rep",k:"dischi",add:"Aggiungi disco",cols:[{k:"titolo",l:"Titolo"},{k:"anno",l:"Anno"},{k:"etichetta",l:"Etichetta"},{k:"musicisti",l:"Musicisti / formazione"},{k:"link",l:"Link per ascoltarlo",type:"url"},{k:"cover",l:"Link copertina (o carica nelle foto)",type:"url"},{k:"note",l:"Una riga di descrizione"}]}]},
+ {id:"date",t:"Concerti e date",sub:"prossimi e passati",intro:"Solo date reali. I concerti passati più importanti si possono aggiungere dopo.",items:[
+  {t:"rep",k:"date",add:"Aggiungi data",cols:[{k:"data",l:"Data",type:"date"},{k:"luogo",l:"Luogo e città"},{k:"formazione",l:"Con chi / progetto"},{k:"link",l:"Link biglietti o evento",type:"url"}]}]},
+ {id:"attivita",t:"Direzione artistica, festival e didattica",sub:"se presenti",intro:"Compila solo se fai anche queste attività.",items:[
+  {t:"url",k:"d_assoc",l:"Sito dell'associazione o organizzazione",h:H('d_assoc')},
+  {t:"rep",k:"festival",add:"Aggiungi rassegna/festival",cols:[{k:"nome",l:"Nome"},{k:"anni",l:"Anni"},{k:"descr",l:"Descrizione di una riga"},{k:"link",l:"Link",type:"url"}]},
+  {t:"area",k:"d_lab",l:"Laboratori e didattica",h:"Cosa fai, per chi, dove, come si partecipa."},
+  {t:"area",k:"d_teatro",l:"Altri incarichi (direzioni, programmazioni, docenze)",h:"Indica periodo e luogo."}]},
+ {id:"stampa",t:"Stampa e riconoscimenti",sub:"recensioni",intro:"Per le recensioni basta il link: non copiamo il testo. Se vuoi una frase breve in evidenza, scrivila e dì se hai il permesso.",items:[
+  {t:"rep",k:"stampa",add:"Aggiungi recensione/articolo",cols:[{k:"testata",l:"Testata"},{k:"anno",l:"Anno"},{k:"link",l:"Link",type:"url"},{k:"riferito",l:"Riferito a quale disco/progetto"},{k:"frase",l:"Frase breve da citare (se autorizzata)"}]}]},
+ {id:"contatti",t:"Contatti e social",sub:"cosa pubblicare",items:[
+  {t:"email",k:"c_email",l:"Email pubblica per contatti e booking",h:H('c_email')},
+  {t:"text",k:"c_tel",l:"Telefono (facoltativo)"},
+  {t:"text",k:"c_booking",l:"Contatto booking/management, se diverso"},
+  {t:"url",k:"c_fb",l:"Facebook",h:H('c_fb')},
+  {t:"url",k:"c_ig",l:"Instagram",h:H('c_ig')},
+  {t:"url",k:"c_altro",l:"Altri profili (YouTube, LinkedIn, sito)"},
+  {t:"check",k:"c_nomail",l:"Preferisco che l'email non compaia in chiaro nella pagina (protezione anti-spam)."},
+  {t:"area",k:"c_note",l:"Come preferisci essere contattato e per quali motivi?"}]},
+ {id:"stile",t:"Gusti e stile del sito",sub:"importante",intro:"Questa parte dà al sito la tua impronta.",items:[
+  {t:"url",k:"g_ref1",l:"Un sito di un altro musicista che ti piace (1)",h:"Incolla il link."},
+  {t:"url",k:"g_ref2",l:"Sito che ti piace (2, facoltativo)"},
+  {t:"url",k:"g_ref3",l:"Sito che ti piace (3, facoltativo)"},
+  {t:"area",k:"g_perche",l:"Cosa ti piace di questi siti?",h:"Colori, foto grandi, poco testo, musica subito in vista…"},
+  {t:"area",k:"g_no",l:"Cosa NON vuoi assolutamente?"},
+  {t:"text",k:"g_colori",l:"Colori preferiti o da evitare"},
+  {t:"text",k:"g_dominio",l:"Indirizzo web desiderato",h:"Es. nomecognome.it. Per ora il sito può stare su un indirizzo gratuito."},
+  {t:"multi",k:"g_funz",l:"Funzioni che vorresti",opts:["Lettore audio/video in evidenza","Calendario concerti","Modulo di contatto","Newsletter","Galleria foto","Scheda stampa scaricabile","Versione inglese"]},
+  {t:"area",k:"g_altro",l:"Altre idee o richieste"}]},
+ {id:"fine",t:"Ultime cose",sub:"note e consenso",items:[
+  {t:"area",k:"n_altro",l:"Altro che vuoi dirci"},
+  {t:"check",k:"ok_testi",l:"Autorizzo la pubblicazione dei testi e dei dati che ho confermato in questo modulo."},
+  {t:"check",k:"ok_rev",l:"Voglio vedere e approvare il sito prima della pubblicazione."}]}
+);
+S.forEach(s=>{if(s.id!=='fine'&&s.id!=='verifica')s.items.push({t:"area",k:"note_"+s.id,l:"Note e dubbi su questa sezione",note:1})});
+
+const $=(s,r=document)=>r.querySelector(s);
+const el=(t,a={},c=[])=>{const e=document.createElement(t);for(const k in a){if(k==='class')e.className=a[k];else if(k.startsWith('on'))e[k]=a[k];else e.setAttribute(k,a[k])}[].concat(c).forEach(x=>e.append(x));return e};
+const KEY=CONFIG.storageKey;
+const slug=CONFIG.artist.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'artista';
+let st={},imgs=[],db=null;
+try{st=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
+let storeOK=true,dirty=false;
+const stamp=()=>new Date().toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});
+function status(){const s=$('#stat'),a=$('#alert');if(s){s.className=storeOK?'':'bad';s.textContent=storeOK?(dirty?'Salvato alle '+stamp():''):'⚠ Non si salva da solo'}if(a)a.style.display=storeOK?'none':'block'}
+function initCheck(){try{localStorage.setItem('__t','1');if(localStorage.getItem('__t')!=='1')throw 0;localStorage.removeItem('__t')}catch(e){storeOK=false}status()}
+const save=()=>{dirty=true;try{localStorage.setItem(KEY,JSON.stringify(st));if(localStorage.getItem(KEY)===null)throw 0;storeOK=true}catch(e){storeOK=false}status();progress()};
+window.addEventListener('beforeunload',e=>{if(dirty&&!storeOK){e.preventDefault();e.returnValue=''}});
+
+const idb=()=>new Promise(r=>{try{const q=indexedDB.open(KEY,1);q.onupgradeneeded=()=>q.result.createObjectStore('img',{keyPath:'id'});q.onsuccess=()=>{db=q.result;r()};q.onerror=()=>r()}catch(e){r()}});
+const idbAll=()=>new Promise(r=>{if(!db)return r([]);const q=db.transaction('img').objectStore('img').getAll();q.onsuccess=()=>r(q.result);q.onerror=()=>r([])});
+const idbPut=o=>{if(db)try{db.transaction('img','readwrite').objectStore('img').put(o)}catch(e){}};
+const idbDel=id=>{if(db)try{db.transaction('img','readwrite').objectStore('img').delete(id)}catch(e){}};
+const idbClear=()=>{if(db)try{db.transaction('img','readwrite').objectStore('img').clear()}catch(e){}};
+
+function resize(file){return new Promise(res=>{const im=new Image(),u=URL.createObjectURL(file);im.onload=()=>{const s=Math.min(1,1600/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*s);c.height=Math.round(im.height*s);c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',.85))};im.onerror=()=>res(null);im.src=u})}
+
+function field(it){
+  if(it.t==='check'){
+    const i=el('input',{type:'checkbox'});i.checked=!!st[it.k];i.onchange=()=>{st[it.k]=i.checked;save()};
+    return el('label',{class:'chk'},[i,el('span',{},it.l)]);
+  }
+  const wrap=el('div',it.note?{class:'note'}:{});
+  if(it.t==='multi'){
+    wrap.append(el('label',{},it.l));st[it.k]=st[it.k]||[];
+    it.opts.forEach(o=>{const i=el('input',{type:'checkbox'});i.checked=st[it.k].includes(o);
+      i.onchange=()=>{st[it.k]=i.checked?[...st[it.k],o]:st[it.k].filter(x=>x!==o);save()};
+      wrap.append(el('label',{class:'chk'},[i,el('span',{},o)]))});
+    return wrap;
+  }
+  wrap.append(el('label',{},it.l));
+  if(it.h)wrap.append(el('p',{class:'hint'},it.h));
+  const i=it.t==='area'?el('textarea'):el('input',{type:it.t==='text'?'text':it.t});
+  if(it.t==='url')i.placeholder='https://…';
+  i.value=st[it.k]||'';
+  const cnt=it.max?el('div',{class:'count'}):null;
+  const upd=()=>{if(cnt)cnt.textContent=i.value.length+' / '+it.max+' caratteri'};
+  i.oninput=()=>{st[it.k]=i.value;upd();save()};upd();
+  wrap.append(i);if(cnt)wrap.append(cnt);
+  return wrap;
+}
+function verify(){
+  const f=el('div');
+  VERIFY.forEach(([k,txt])=>{
+    const cur=st[k]||{};
+    const box=el('div',{class:'v'+(cur.s==='fix'?' fix':cur.s==='ok'?' okk':'')});
+    const ta=el('textarea',{placeholder:'Scrivi qui la versione corretta o i dettagli mancanti'});
+    ta.value=cur.n||'';ta.style.display=cur.s==='fix'?'block':'none';
+    const mk=(v,l)=>{const r=el('input',{type:'radio',name:k});r.checked=cur.s===v;
+      r.onchange=()=>{st[k]={...(st[k]||{}),s:v};box.className='v '+(v==='fix'?'fix':'okk');ta.style.display=v==='fix'?'block':'none';save()};
+      return el('label',{},[r,l])};
+    ta.oninput=()=>{st[k]={...(st[k]||{}),n:ta.value};save()};
+    box.append(el('p',{},txt),el('div',{class:'ch'},[mk('ok','Corretto'),mk('fix','Da correggere / completare')]),ta);
+    f.append(box);
+  });
+  return f;
+}
+function rep(it){
+  const box=el('div');
+  const draw=()=>{
+    box.innerHTML='';
+    st[it.k].forEach((row,idx)=>{
+      const g=el('div',{class:'grid'});
+      it.cols.forEach(c=>{
+        const i=el('input',{type:c.type||'text'});if(c.type==='url')i.placeholder='https://…';
+        i.value=row[c.k]||'';i.oninput=()=>{row[c.k]=i.value;save()};
+        g.append(el('div',{},[el('label',{},c.l),i]));
+      });
+      box.append(el('div',{class:'row'},[el('button',{class:'sec x',type:'button',onclick:()=>{st[it.k].splice(idx,1);save();draw()}},'Rimuovi'),g]));
+    });
+    box.append(el('button',{class:'sec',type:'button',onclick:()=>{st[it.k].push({});save();draw()}},'+ '+it.add));
+  };
+  if(!(st[it.k]||[]).length)st[it.k]=[{}];
+  draw();return box;
+}
+function photos(){
+  const root=el('div');
+  const draw=()=>{
+    root.innerHTML='';
+    root.append(el('div',{class:'warn'},db?'Le foto restano salvate in questo browser finché non le rimuovi.':'Attenzione: il browser non permette di salvare le foto tra una visita e l\'altra. Compila e scarica il file in una sola volta.'));
+    PCAT.forEach(([c,l,h])=>{
+      const box=el('div',{class:'cat'},[el('h4',{},l),el('p',{class:'hint'},h)]);
+      const inp=el('input',{type:'file',accept:'image/*',multiple:'',style:'display:none'});
+      inp.onchange=async()=>{
+        for(const f of inp.files){const d=await resize(f);if(!d)continue;
+          const o={id:Date.now()+'-'+Math.random().toString(36).slice(2,7),cat:c,name:f.name,data:d,alt:'',credit:''};imgs.push(o);idbPut(o)}
+        draw();progress();
+      };
+      box.append(inp,el('button',{class:'sec',type:'button',onclick:()=>inp.click()},'+ Carica foto'));
+      const th=el('div',{class:'thumbs'});
+      imgs.filter(o=>o.cat===c).forEach(o=>{
+        const alt=el('input',{type:'text',placeholder:'Descrizione breve della foto'});alt.value=o.alt||'';alt.oninput=()=>{o.alt=alt.value;idbPut(o)};
+        const cr=el('input',{type:'text',placeholder:'Foto di… (fotografo)'});cr.value=o.credit||'';cr.oninput=()=>{o.credit=cr.value;idbPut(o)};
+        th.append(el('div',{class:'th'},[el('img',{src:o.data,alt:o.alt||o.name}),el('button',{type:'button',onclick:()=>{imgs=imgs.filter(x=>x.id!==o.id);idbDel(o.id);draw();progress()}},'Rimuovi'),alt,cr]));
+      });
+      box.append(th);root.append(box);
+    });
+  };
+  draw();return root;
+}
+function build(){
+  const app=$('#app');app.innerHTML='';
+  S.forEach((s,n)=>{
+    const d=el('details',n===0?{open:''}:{});
+    d.append(el('summary',{},[el('span',{},(n+1)+'. '+s.t),el('small',{},s.sub||'')]));
+    const b=el('div',{class:'body'});
+    if(s.intro)b.append(el('p',{class:'intro'},s.intro));
+    s.items.forEach(it=>b.append(it.t==='verify'?verify():it.t==='rep'?rep(it):it.t==='photos'?photos():field(it)));
+    d.append(b);app.append(d);
+  });
+  const end=el('div',{class:'end'});
+  end.innerHTML='<strong>Hai finito, o vuoi continuare più tardi?</strong><p class="intro">Puoi chiudere la pagina: le risposte restano salvate su questo computer. Per consegnare: 1) premi «Scarica PDF»; 2) se hai caricato foto, premi anche «Scarica foto (ZIP)»; 3) invia i due file '+SENDTXT+'.</p><div class="acts"></div><div id="msg" role="status"></div>';
+  const acts=$('.acts',end);
+  acts.append(
+    el('button',{type:'button',onclick:dlPdf},'Scarica PDF'),
+    el('button',{class:'sec',type:'button',onclick:dlZ},'Scarica foto (ZIP)'));
+  const acts2=el('div',{class:'acts'});
+  [['Salva bozza',()=>dl('json')],['Carica bozza',()=>$('#imp').click()],['Azzera tutto',reset]].forEach(([l,f])=>acts2.append(el('button',{class:'sec',type:'button',style:'font-weight:400;padding:5px 10px;font-size:12px',onclick:f},l)));
+  end.append(acts2);
+  const imp=el('input',{type:'file',accept:'.json',id:'imp',style:'display:none'});imp.onchange=load;
+  end.append(imp);app.append(end);
+  progress();
+}
+function flat(){
+  const out=[];
+  S.forEach((s,n)=>{
+    out.push('\n=== '+(n+1)+'. '+s.t.toUpperCase()+' ===');
+    s.items.forEach(it=>{
+      if(it.t==='verify')VERIFY.forEach(([k,t])=>{const v=st[k]||{};out.push('- '+t+'\n  -> '+(v.s==='ok'?'CORRETTO':v.s==='fix'?'DA CORREGGERE: '+(v.n||''):'(non risposto)'))});
+      else if(it.t==='rep')(st[it.k]||[]).forEach((r,i)=>{const p=it.cols.filter(c=>r[c.k]).map(c=>c.l+': '+r[c.k]);if(p.length)out.push('['+it.k+' '+(i+1)+'] '+p.join(' | '))});
+      else if(it.t==='photos')PCAT.forEach(([c,l])=>{const a=imgs.filter(o=>o.cat===c);if(a.length)out.push(l+': '+a.map(o=>o.name+(o.alt?' ("'+o.alt+'")':'')+(o.credit?' [foto: '+o.credit+']':'')).join('; '))});
+      else if(it.t==='check')out.push((st[it.k]?'[x] ':'[ ] ')+it.l);
+      else if(it.t==='multi')out.push(it.l+': '+((st[it.k]||[]).join(', ')||'—'));
+      else out.push(it.l+': '+(st[it.k]||'—'));
+    });
+  });
+  return 'MATERIALI SITO '+CONFIG.artist.toUpperCase()+' – compilato il '+new Date().toLocaleDateString('it-IT')+'\n'+out.join('\n');
+}
+async function dlFile(data,name,type){
+  const blob=new Blob([data],{type:type||'application/octet-stream'});
+  if(window.claude&&claude.use){
+    let ok=false;
+    try{const d=await claude.use('downloads');if(d){try{await d.save({filename:name,data:blob});return}catch(e){if(e&&e.code==='declined')return}}}catch(e){}
+    msg('Da questo link il download non è consentito. Apri il modulo dal file HTML che ti è stato inviato, sul computer (Chrome o Edge), oppure dall\'indirizzo web che ti è stato dato.');
+    return;
+  }
+  const a=el('a',{href:URL.createObjectURL(blob),download:name});document.body.append(a);a.click();a.remove()}
+function dl(type,noimg){
+  if(type==='json')dlFile(JSON.stringify({v:2,artist:CONFIG.artist,answers:st,images:noimg?[]:imgs}),'risposte-'+slug+(noimg?'-testi':'')+'.json','application/json');
+  else dlFile(flat(),'riepilogo-'+slug+'.txt','text/plain');
+  msg(type==='json'?'Bozza salvata sul tuo computer. Per riprendere più tardi usa «Carica bozza».':'File scaricato.');
+}
+function copy(){navigator.clipboard.writeText(flat()).then(()=>msg('Riepilogo copiato negli appunti.'),()=>msg('Copia non riuscita: usa il download.'))}
+function load(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);st=o.answers||o;imgs=o.images||[];idbClear();imgs.forEach(idbPut);save();build();msg('Risposte caricate.')}catch(x){msg('File non valido.')}};r.readAsText(f)}
+function reset(){if(confirm('Cancellare tutte le risposte e le foto? Scarica prima il file se vuoi tenerle.')){st={};imgs=[];idbClear();save();build()}}
+function msg(t){const m=$('#msg');if(m)m.textContent=t}
+/* ===== Esportazione: ZIP foto, PDF (nessuna libreria esterna) ===== */
+const INV=CONFIG.invio||{};
+const SENDTXT=(()=>{const a=[];if(INV.whatsapp)a.push('su WhatsApp al '+INV.whatsapp);if(INV.email)a.push('per email a '+INV.email);return a.length?a.join(' oppure '):'a chi ti ha mandato il modulo'})();
+const te=new TextEncoder();
+const crcT=(()=>{const t=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
+const crc32=b=>{let c=0xFFFFFFFF;for(let i=0;i<b.length;i++)c=crcT[(c^b[i])&255]^(c>>>8);return (c^0xFFFFFFFF)>>>0};
+function zip(files){
+  const parts=[],cen=[];let off=0;
+  const u16=n=>[n&255,(n>>>8)&255],u32=n=>[n&255,(n>>>8)&255,(n>>>16)&255,(n>>>24)&255];
+  files.forEach(f=>{
+    const nm=te.encode(f.name),c=crc32(f.data),sz=f.data.length;
+    const lh=new Uint8Array([0x50,0x4b,3,4,...u16(20),...u16(0x0800),...u16(0),...u16(0),...u16(0x21),...u32(c),...u32(sz),...u32(sz),...u16(nm.length),...u16(0)]);
+    parts.push(lh,nm,f.data);
+    cen.push(new Uint8Array([0x50,0x4b,1,2,...u16(20),...u16(20),...u16(0x0800),...u16(0),...u16(0),...u16(0x21),...u32(c),...u32(sz),...u32(sz),...u16(nm.length),...u16(0),...u16(0),...u16(0),...u16(0),...u32(0),...u32(off)]),nm);
+    off+=lh.length+nm.length+sz;
+  });
+  const cl=cen.reduce((a,b)=>a+b.length,0);
+  const end=new Uint8Array([0x50,0x4b,5,6,0,0,0,0,...u16(files.length),...u16(files.length),...u32(cl),...u32(off),0,0]);
+  return new Blob([...parts,...cen,end],{type:'application/zip'});
+}
+const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,'');
+const catLabel=c=>(PCAT.find(x=>x[0]===c)||[])[1]||c;
+function zipName(o,i){return String(i+1).padStart(2,'0')+'_'+o.cat+'_'+(o.name||'foto').replace(/\.[^.]+$/,'').replace(/[^A-Za-z0-9_-]+/g,'-').slice(0,40)+'.jpg'}
+function collect(){
+  const rows=[];
+  S.forEach((s,n)=>{
+    const sec=(n+1)+'. '+s.t;
+    s.items.forEach(it=>{
+      if(it.t==='verify')VERIFY.forEach(([k,t])=>{const v=st[k]||{};rows.push([sec,t,v.s==='ok'?'CORRETTO':v.s==='fix'?('DA CORREGGERE'+(v.n?': '+v.n:'')):''])});
+      else if(it.t==='rep'){const nm=it.add.replace(/^Aggiungi\s+/i,'');(st[it.k]||[]).forEach((r,i)=>{const p=it.cols.filter(c=>r[c.k]).map(c=>c.l+': '+r[c.k]);if(p.length)rows.push([sec,nm.charAt(0).toUpperCase()+nm.slice(1)+' '+(i+1),p.join('\n')])})}
+      else if(it.t==='photos'){}
+      else if(it.t==='check')rows.push([sec,it.l,st[it.k]?'SPUNTATO (sì)':'Non spuntato']);
+      else if(it.t==='multi')rows.push([sec,it.l,(st[it.k]||[]).join(', ')]);
+      else rows.push([sec,it.l,st[it.k]||'']);
+    });
+  });
+  return rows;
+}
+function dataBytes(u){const b=atob(u.split(',')[1]),a=new Uint8Array(b.length);for(let i=0;i<b.length;i++)a[i]=b.charCodeAt(i);return a}
+function zipPhotos(){return zip(imgs.map((o,i)=>({name:zipName(o,i),data:dataBytes(o.data)})))}
+function dlZ(){if(!imgs.length){msg('Non hai ancora caricato foto.');return}dlFile(zipPhotos(),'foto-'+slug+'.zip');msg('Foto scaricate. Invia anche questo file '+SENDTXT+'.')}
+/* ===== PDF generato nel browser (nessuna libreria, nessuna finestra di stampa) ===== */
+const CPM={0x20AC:0x80,0x201A:0x82,0x0192:0x83,0x201E:0x84,0x2026:0x85,0x2020:0x86,0x2021:0x87,0x02C6:0x88,0x2030:0x89,0x0160:0x8A,0x2039:0x8B,0x0152:0x8C,0x017D:0x8E,0x2018:0x91,0x2019:0x92,0x201C:0x93,0x201D:0x94,0x2022:0x95,0x2013:0x96,0x2014:0x97,0x02DC:0x98,0x2122:0x99,0x0161:0x9A,0x203A:0x9B,0x0153:0x9C,0x017E:0x9E,0x0178:0x9F};
+const cp1252=c=>(c<128||(c>=160&&c<=255))?c:(CPM[c]||63);
+const pdfStr=s=>{let o='(';for(const ch of String(s)){const c=cp1252(ch.codePointAt(0));o+=(c===40||c===41||c===92)?'\\'+String.fromCharCode(c):String.fromCharCode(c<32?32:c)}return o+')'};
+const mctx=document.createElement('canvas').getContext('2d');
+const tw=(s,sz,bold)=>{mctx.font=(bold?'bold ':'')+'100px Helvetica, Arial, sans-serif';return mctx.measureText(s).width*sz/100};
+function wrap(text,sz,bold,maxW){
+  const out=[];
+  String(text).split('\n').forEach(par=>{
+    let line='';
+    par.split(/\s+/).filter(Boolean).forEach(w=>{
+      while(tw(w,sz,bold)>maxW){let k=w.length;while(k>1&&tw(w.slice(0,k),sz,bold)>maxW)k--;if(line){out.push(line);line=''}out.push(w.slice(0,k));w=w.slice(k)}
+      const x=line?line+' '+w:w;
+      if(tw(x,sz,bold)<=maxW)line=x;else{out.push(line);line=w}
+    });
+    out.push(line);
+  });
+  return out;
+}
+const enc=s=>{const a=new Uint8Array(s.length);for(let i=0;i<s.length;i++)a[i]=s.charCodeAt(i)&255;return a};
+function jpgSize(b){let i=2;while(i<b.length-8){if(b[i]!==0xFF){i++;continue}const m=b[i+1];if(m===0xFF){i++;continue}if(m===1||(m>=0xD0&&m<=0xD9)){i+=2;continue}if(m>=0xC0&&m<=0xCF&&m!==0xC4&&m!==0xC8&&m!==0xCC)return{h:(b[i+5]<<8)|b[i+6],w:(b[i+7]<<8)|b[i+8]};i+=2+((b[i+2]<<8)|b[i+3])}return null}
+function makePdf(rows,photos){
+  const W=595,H=842,M=48,CW=W-2*M,BOT=56;
+  const pages=[];let ops,y;
+  const newPage=()=>{ops=[];pages.push(ops);y=H-M};
+  const need=h=>{if(y-h<BOT)newPage()};
+  const text=(s,x,yy,sz,f,g)=>ops.push((g!=null?g+' g ':'')+'BT /'+f+' '+sz+' Tf '+x.toFixed(1)+' '+yy.toFixed(1)+' Td '+pdfStr(s)+' Tj ET'+(g!=null?' 0 g':''));
+  const head=s=>{need(46);y-=10;text(s,M,y-12,12,'F2');ops.push('0.6 G 0.5 w '+M+' '+(y-17).toFixed(1)+' m '+(W-M)+' '+(y-17).toFixed(1)+' l S');y-=26};
+  newPage();
+  text('Materiali per il sito – '+CONFIG.artist,M,y-16,17,'F2');y-=26;
+  text('Compilato il '+new Date().toLocaleDateString('it-IT'),M,y-10,9,'F1',0.4);y-=14;
+  let cur='';
+  rows.forEach(([s,q,a])=>{
+    if(s!==cur){head(s);cur=s}
+    const ql=wrap(q,9.5,true,CW),emp=!a,al=wrap(a||'(non compilato)',10,false,CW-12);
+    need(ql.length*12.5+13);
+    ql.forEach(l=>{text(l,M,y-9.5,9.5,'F2');y-=12.5});
+    al.forEach(l=>{need(13);ops.push('0.75 G 1 w '+(M+3)+' '+(y+1).toFixed(1)+' m '+(M+3)+' '+(y-12).toFixed(1)+' l S');if(l)text(l,M+12,y-10,10,'F1',emp?0.55:null);y-=13});
+    y-=6;
+  });
+  if(photos.length){
+    head('Foto caricate');
+    const cw=150,gap=(CW-3*cw)/2;let i=0;
+    while(i<photos.length){
+      const row=photos.slice(i,i+3).map(f=>{
+        const sc=Math.min(cw/f.w,110/f.h),iw=f.w*sc,ih=f.h*sc;
+        const l1=wrap(f.c1,7.5,true,cw),l2=wrap(f.c2,7.5,false,cw);
+        return{f,iw,ih,l1,l2,h:ih+6+(l1.length+l2.length)*9.5};
+      });
+      const rh=Math.max(...row.map(r=>r.h))+12;
+      need(rh);
+      row.forEach((r,c)=>{
+        const x=M+c*(cw+gap);
+        ops.push('q '+r.iw.toFixed(1)+' 0 0 '+r.ih.toFixed(1)+' '+x.toFixed(1)+' '+(y-r.ih).toFixed(1)+' cm /Im'+(i+c)+' Do Q');
+        let ty=y-r.ih-6;
+        r.l1.forEach(l=>{text(l,x,ty-7,7.5,'F2');ty-=9.5});
+        r.l2.forEach(l=>{text(l,x,ty-7,7.5,'F1',0.3);ty-=9.5});
+      });
+      y-=rh;i+=3;
+    }
+  }
+  pages.forEach((o,n)=>{
+    o.push('0.45 g BT /F1 8 Tf '+M+' 30 Td '+pdfStr('Materiali per il sito – '+CONFIG.artist)+' Tj ET');
+    o.push('BT /F1 8 Tf '+(W-M-70)+' 30 Td '+pdfStr('Pagina '+(n+1)+' di '+pages.length)+' Tj ET 0 g');
+  });
+  // oggetti
+  const objs=[null,null];
+  const add=c=>{objs.push(c);return objs.length};
+  const f1=add([enc('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>')]);
+  const f2=add([enc('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>')]);
+  const imIds=photos.map(f=>add([enc('<< /Type /XObject /Subtype /Image /Width '+f.w+' /Height '+f.h+' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length '+f.jpg.length+' >>\nstream\n'),f.jpg,enc('\nendstream')]));
+  const xo=imIds.length?' /XObject << '+imIds.map((id,k)=>'/Im'+k+' '+id+' 0 R').join(' ')+' >>':'';
+  const kids=[];
+  pages.forEach(o=>{
+    const s=o.join('\n');
+    const cid=add([enc('<< /Length '+s.length+' >>\nstream\n'+s+'\nendstream')]);
+    kids.push(add([enc('<< /Type /Page /Parent 2 0 R /MediaBox [0 0 '+W+' '+H+'] /Resources << /Font << /F1 '+f1+' 0 R /F2 '+f2+' 0 R >>'+xo+' >> /Contents '+cid+' 0 R >>')]));
+  });
+  const info=add([enc('<< /Title '+pdfStr('Materiali per il sito - '+CONFIG.artist)+' /Producer (Modulo materiali sito) >>')]);
+  objs[0]=[enc('<< /Type /Catalog /Pages 2 0 R >>')];
+  objs[1]=[enc('<< /Type /Pages /Kids ['+kids.map(k=>k+' 0 R').join(' ')+'] /Count '+kids.length+' >>')];
+  const out=[],offs=[];let pos=0;
+  const push=b=>{out.push(b);pos+=b.length};
+  push(enc('%PDF-1.4\n%'));push(new Uint8Array([0xE2,0xE3,0xCF,0xD3]));push(enc('\n'));
+  objs.forEach((c,i)=>{offs.push(pos);push(enc((i+1)+' 0 obj\n'));c.forEach(push);push(enc('\nendobj\n'))});
+  const xr=pos;
+  let x='xref\n0 '+(objs.length+1)+'\n0000000000 65535 f \n';
+  offs.forEach(o=>{x+=String(o).padStart(10,'0')+' 00000 n \n'});
+  x+='trailer\n<< /Size '+(objs.length+1)+' /Root 1 0 R /Info '+info+' 0 R >>\nstartxref\n'+xr+'\n%%EOF';
+  push(enc(x));
+  return new Blob(out,{type:'application/pdf'});
+}
+function thumb(u){return new Promise(res=>{const im=new Image();im.onload=()=>{const s=Math.min(1,420/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*s));c.height=Math.max(1,Math.round(im.height*s));const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);res(c.toDataURL('image/jpeg',.72))};im.onerror=()=>res(null);im.src=u})}
+async function dlPdf(){
+  msg('Preparo il PDF…');
+  try{
+    const ph=[];
+    for(let i=0;i<imgs.length;i++){
+      const o=imgs[i],u=await thumb(o.data);if(!u)continue;
+      const jpg=dataBytes(u),sz=jpgSize(jpg);if(!sz)continue;
+      ph.push({jpg,w:sz.w,h:sz.h,c1:zipName(o,i),c2:catLabel(o.cat)+' – '+(o.alt||'senza descrizione')+(o.credit?' (foto: '+o.credit+')':'')});
+    }
+    await dlFile(makePdf(collect(),ph),'risposte-'+slug+'.pdf','application/pdf');
+    msg('PDF scaricato. Ora invialo '+SENDTXT+(imgs.length?', insieme al file delle foto (premi «Scarica foto (ZIP)»)':'')+'.');
+  }catch(e){msg('Non sono riuscito a creare il PDF ('+e.message+'). Premi «Salva bozza» e manda quel file.')}
+}
+function progress(){
+  let tot=0,done=0;
+  S.forEach(s=>s.items.forEach(it=>{
+    if(it.t==='verify')VERIFY.forEach(([k])=>{tot++;if((st[k]||{}).s)done++});
+    else if(it.t==='rep'){tot++;if((st[it.k]||[]).some(r=>Object.values(r).some(v=>v)))done++}
+    else if(it.t==='photos')['hero','ritratto','live'].forEach(c=>{tot++;if(imgs.some(o=>o.cat===c))done++});
+    else if(it.t==='check'||it.note||it.t==='multi'){}
+    else{tot++;if(st[it.k])done++}
+  }));
+  const p=tot?Math.round(done/tot*100):0;
+  $('#fill').style.width=p+'%';$('#pct').textContent=p+'%';$('#cnt').textContent=done+' / '+tot;
+}
+document.title='Materiali per il sito – '+CONFIG.artist;
+$('#h1').textContent='Il tuo sito web: raccogliamo i materiali'+(CONFIG.artist.startsWith('[')?'':'');
+Promise.race([idb(),new Promise(r=>setTimeout(r,2000))]).then(idbAll).then(a=>{imgs=a;build();initCheck()}).catch(()=>{build();initCheck()});
+</script>
+</body>
+</html>
